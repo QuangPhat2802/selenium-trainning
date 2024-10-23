@@ -9,7 +9,7 @@ Make sure you have the following installed:
 - **Java JDK 17 or higher**: [Download here](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - **Maven** (for dependency management): [Install Maven](https://maven.apache.org/install.html) 
 - **An IDE** (e.g., IntelliJ IDEA) is recommended
-- - **Jira Trail Account**: [Signup here](https://www.atlassian.com/try/cloud/signup?bundle=jira-software&edition=standard) 
+- **Jira Trail Account**: [Signup here](https://www.atlassian.com/try/cloud/signup?bundle=jira-software&edition=standard) 
 
 ## Usage
 
