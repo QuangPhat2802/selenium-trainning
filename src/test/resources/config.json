@@ -1,0 +1,7 @@
+{
+  "loginUrl": "https://id.atlassian.com/login",
+  "credentials": {
+    "username": "testuser",
+    "password": "password123"
+  }
+}
