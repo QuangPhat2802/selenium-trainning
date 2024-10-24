@@ -11,7 +11,12 @@ public class BaseTest {
     // Setup method for WebDriver initialization
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver");
+            String osName = System.getProperty("os.name").toLowerCase();
+            if (osName.contains("mac")) {
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver");
+            } else {
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+            }
             driver = new ChromeDriver();
 
             // Set default timeouts (optional)
