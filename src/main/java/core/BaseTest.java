@@ -12,11 +12,7 @@ public class BaseTest {
     public static WebDriver getDriver() {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver");
-
-            // Optional: Set browser options (e.g., headless mode)
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized");
-            driver = new ChromeDriver(options);
+            driver = new ChromeDriver();
 
             // Set default timeouts (optional)
             driver.manage().window().maximize();
