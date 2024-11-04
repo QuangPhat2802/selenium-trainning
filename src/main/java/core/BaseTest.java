@@ -6,30 +6,33 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseTest {
 
-    private static WebDriver driver;
+    // ThreadLocal instance for WebDriver
+    private static ThreadLocal<WebDriver> driver = ThreadLocal.withInitial(() -> {
+        // Determine the operating system and set the WebDriver path accordingly
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("mac")) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
+        }
+
+        // Create a new ChromeDriver instance for the current thread
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize(); // Maximize the window (optional)
+        return webDriver;
+    });
 
     // Setup method for WebDriver initialization
     public static WebDriver getDriver() {
-        if (driver == null) {
-            String osName = System.getProperty("os.name").toLowerCase();
-            if (osName.contains("mac")) {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver");
-            } else {
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
-            }
-            driver = new ChromeDriver();
-
-            // Set default timeouts (optional)
-            driver.manage().window().maximize();
-        }
-        return driver;
+        return driver.get();
     }
 
     // Quit the WebDriver
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        WebDriver webDriver = driver.get(); // Get the driver for the current thread
+        if (webDriver != null) {
+            webDriver.quit(); // Quit the driver
+            driver.remove(); // Clean up the ThreadLocal variable
         }
     }
 }
