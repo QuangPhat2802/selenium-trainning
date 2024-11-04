@@ -6,18 +6,13 @@ import io.cucumber.java.Before;
 import core.BaseTest;
 
 public class Hooks extends BaseTest {
-
-    WebDriver driver;
-
     @Before
     public void setup() {
-        driver = getDriver();
+        getDriver();
     }
 
     @After
     public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        closeDriver();
     }
 }
