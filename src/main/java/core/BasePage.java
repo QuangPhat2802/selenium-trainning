@@ -25,11 +25,16 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    // Custom function to wait until the invisibility of an element
+    public boolean waitUntilInVisibilityOf(WebElement element) {
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
     // Method to wait for the page to load completely
     public void waitForPageLoad() {
-        // Initial wait of 2000 milliseconds (2 seconds)
+        // Initial wait of 1000 milliseconds (1 second)
         try {
-            Thread.sleep(2000); // Wait for 2 seconds
+            Thread.sleep(1000); // Wait for 1 seconds
         } catch (InterruptedException e) {
             e.printStackTrace(); // Handle the exception
         }
@@ -43,6 +48,13 @@ public class BasePage {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+
+        // Initial wait of 1000 milliseconds (1 second)
+        try {
+            Thread.sleep(1000); // Wait for 1 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // Handle the exception
         }
     }
 
